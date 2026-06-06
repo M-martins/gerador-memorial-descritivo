@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerador de Memorial Descritivo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Gerador de Memorial Descritivo</h1>
+      <p>Importe, confira, preencha confrontações e gere o memorial.</p>
+    </div>
+    <button id="btnRecuperar">Recuperar memorial</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="steps">
+        <span class="active">1 Entrada</span><span>2 Conferência</span><span>3 Confrontações</span><span>4 Dados</span><span>5 Prévia</span>
+      </div>
+
+      <div class="card">
+        <h2>1. Entrada da geometria</h2>
+        <label>Sistema de coordenadas de entrada</label>
+        <select id="inputCrs"></select>
+
+        <div class="grid2">
+          <div>
+            <h3>CSV</h3>
+            <input type="file" id="csvFile" accept=".csv" />
+            <button id="btnCsv">Ler CSV</button>
+            <a href="/exemplos/exemplo_coordenadas.csv" download>baixar modelo</a>
+          </div>
+          <div>
+            <h3>GeoJSON</h3>
+            <input type="file" id="geojsonFile" accept=".geojson,.json" />
+            <button id="btnGeojson">Ler GeoJSON</button>
+          </div>
+          <div>
+            <h3>Shapefile ZIP</h3>
+            <input type="file" id="shpFile" accept=".zip" />
+            <button id="btnShp">Ler Shapefile</button>
+          </div>
+          <div>
+            <h3>Consulta</h3>
+            <button id="btnReset" type="button">Limpar / reiniciar</button>
+          </div>
+        </div>
+        <p class="hint">Também é possível desenhar diretamente no mapa usando a ferramenta de polígono.</p>
+      </div>
+
+      <div class="card" id="validationCard" hidden>
+        <h2>2. Conferência</h2>
+        <div id="validationBox"></div>
+        <p><b>Área:</b> <span id="area"></span> m² | <b>Perímetro:</b> <span id="perimetro"></span> m</p>
+        <label><input type="checkbox" id="okGeom"> Confirmo que a geometria e o sistema de coordenadas estão corretos.</label>
+      </div>
+
+      <div class="card" id="frontCard" hidden>
+        <h2>3. Frente e confrontações</h2>
+        <label>Face de frente do imóvel</label>
+        <select id="faceFrente"></select>
+        <div id="confrontacoes"></div>
+      </div>
+
+      <div class="card" id="dadosCard" hidden>
+        <h2>4. Dados do imóvel</h2>
+        <div class="grid2">
+          <input id="proprietario" placeholder="Proprietário *" />
+          <input id="municipio" placeholder="Município *" />
+          <input id="quadra" placeholder="Quadra *" />
+          <input id="lote" placeholder="Lote *" />
+          <input id="areaDeclarada" placeholder="Área declarada (opcional)" />
+          <input id="matricula" placeholder="Matrícula (opcional)" />
+          <input id="cartorio" placeholder="Cartório de Registro (opcional)" />
+          <input id="projeto" placeholder="Projeto (opcional)" />
+          <input id="responsavel" placeholder="Responsável técnico (opcional)" />
+        </div>
+        <button id="btnPrevia">Gerar prévia</button>
+      </div>
+
+      <div class="card" id="previewCard" hidden>
+        <h2>5. Prévia do memorial</h2>
+        <div id="preview"></div>
+        <label><input type="checkbox" id="okPreview"> Confirmo que as informações apresentadas estão corretas.</label>
+        <button id="btnEmitir">Emitir PDF</button>
+        <div id="resultado"></div>
+      </div>
+    </section>
+
+    <section id="map"></section>
+  </main>
+
+  <dialog id="dlgRecuperar">
+    <h2>Recuperar memorial</h2>
+    <input id="recProtocolo" placeholder="Protocolo" />
+    <input id="recChave" placeholder="Chave de validação" />
+    <button id="btnBuscarMemorial">Buscar</button>
+    <button onclick="dlgRecuperar.close()">Fechar</button>
+    <div id="recResultado"></div>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

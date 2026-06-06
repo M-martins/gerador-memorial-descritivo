@@ -1,0 +1,17 @@
+:root{--bg:#f4f7fb;--card:#fff;--ink:#1f2937;--muted:#667085;--brand:#1f4e79;--line:#d0d7de}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{height:84px;background:linear-gradient(90deg,#173b5d,#2d6d9f);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+header h1{margin:0;font-size:24px} header p{margin:4px 0 0;color:#d9e8f5}.layout{display:grid;grid-template-columns:520px 1fr;height:calc(100vh - 84px)}
+.panel{overflow:auto;padding:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px rgba(0,0,0,.05)}
+.card h2{margin:0 0 12px;font-size:18px}.card h3{font-size:14px;margin:8px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.steps{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}.steps span{font-size:12px;padding:6px 10px;background:#e5e7eb;border-radius:999px}.steps .active{background:#1f4e79;color:white}
+input,select,button{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;margin:5px 0}button{background:var(--brand);color:white;cursor:pointer;border:0;font-weight:bold}button:hover{filter:brightness(1.08)}
+#map{height:100%;width:100%}.hint{color:var(--muted);font-size:13px}.ok{background:#ecfdf3;border-left:5px solid #039855;padding:10px}.warn{background:#fffaeb;border-left:5px solid #f79009;padding:10px}.err{background:#fef3f2;border-left:5px solid #d92d20;padding:10px}.face-row{display:grid;grid-template-columns:80px 1fr 1.5fr;gap:8px;align-items:center;margin-bottom:8px}.preview-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:14px;line-height:1.5}table{width:100%;border-collapse:collapse;font-size:12px}td,th{border:1px solid var(--line);padding:6px;text-align:left}dialog{border:0;border-radius:16px;padding:20px;max-width:500px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.face-row.front-row {
+  border-left: 4px solid #1f4e79;
+  background: #eef6ff;
+  padding-left: 8px;
+}
+.face-row .front-note {
+  color: #1f4e79;
+  font-weight: 700;
+}
